@@ -1,0 +1,45 @@
+{% load static %}
+
+<center>
+    <h4>Search Doctor</h4>
+</center>
+<form novalidate="" method="GET" action="{% url 'doctor:home' %}">
+    <div class="row">
+        <div class="form-group col-sm-10">
+            <label for="special">Specility</label>
+            <select class="form-control" name="specility">
+                <option selected="selected" disabled>Select</option>
+                {% for spe in specilities %}
+                <option value="{{spe.id}}" {% if request.GET.specility|add:"0"  == spe.id  %} selected="selected"
+                    {% endif %}>
+                    {{spe.title}}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-group  col-sm-10">
+            <input type="text" class="form-control" placeholder="Doctor's name" name="name" value="{{request.GET.name}}"
+                aria-label="Recipient's username" aria-describedby="basic-addon2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6" style="padding-top: 13px;">
+            <label class="radio-inline"><input type="radio" name="gender" value="all"
+                    {% if request.GET.gender == 'all' %} checked {% endif %}>All</label>
+            <label class="radio-inline"><input type="radio" name="gender" value="male"
+                    {% if request.GET.gender == 'male' %} checked {% endif %}>Male</label>
+            <label class="radio-inline"><input type="radio" name="gender" value="female"
+                    {% if request.GET.gender == 'female' %} checked {% endif %}>Female</label>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 10px;">
+        <div class="facet-group col-sm-5">
+            <button class="btn btn-success btn-block" type="submit">
+                <i class="fa fa-search"></i> Find a Doctor
+            </button>
+        </div>
+    </div>
+</form>

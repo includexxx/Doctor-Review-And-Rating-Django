@@ -1,0 +1,5 @@
+<ul class="list-group">
+    {% for spe in specilities|slice:"5" %}
+    <li class="list-group-item"><a href="{% url 'doctor:home' %}?specility={{spe.id}}">{{spe.title}}</a></li>
+    {% endfor %}
+</ul>

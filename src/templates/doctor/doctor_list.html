@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+Doctor List
+{% endblock %}
+
+{% block breadcrumb %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Doctor List</li>
+  </ol>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 home-banner-panel">
+      {% include 'snippets/search.html' %}
+    </div>
+    <div class="col-sm-6 home-banner-panel">
+      <h4>Search By Specility</h4>
+      {% include 'snippets/right_bar.html' %}
+      <a href="#">see more <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row" style="padding-top:10px;">
+    {% for doctor in doctors %}
+    <div class="col-sm-4" style="padding-top:10px;">
+      <div class="card" style="width: 18rem;">
+        {% if doctor.image %}
+        <img class="card-img-top" src="{{doctor.image.url}}" style="max-height: 100px;" alt="Card image cap">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{doctor.full_name}}</h5>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span><br>
+          <a href="{% url 'doctor:doctor_detail' pk=doctor.id %}" class="btn btn-primary">Deatils</a>
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% include 'snippets/pagination.html' %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% load static i18n staticfiles %}
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block title %}Daktar{% endblock title %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="riyad">
+
+  <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  {% block css %}
+
+
+  <!-- Your stuff: Third-party CSS libraries go here -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+  <!-- This file stores project-specific CSS -->
+
+  <link href="{% static 'css/project.css' %}" rel="stylesheet">
+  <link href="{% static 'css/sb-admin-2.css' %}" rel="stylesheet">
+  <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+  {% block extra_css %}
+
+  {% endblock %}
+
+  <style>
+    a:hover {
+      text-decoration: none;
+    }
+
+    #content {
+      min-height: 80vh;
+    }
+
+    .custom-formset-td .form-group {
+      width: 200px;
+    }
+  </style>
+
+  {% endblock %}
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        {% include 'snippets/navbar.html'%}
+        <div class="container">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+            <h1 class="h3 mb-0 text-gray-800 ml-auto mr-auto text-center">
+
+              {% block page_heading %}{% endblock %}
+              {% block breadcrumb %}{% endblock %}
+            </h1>
+            {% block action_button %}
+            {% endblock %}
+          </div>
+          {% block content %}
+          {% endblock %}
+        </div> <!-- /container -->
+
+      </div>
+      <footer class="sticky-footer bg-white">
+        <div class="container">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © MH RIYAD 2019</span>
+            <!-- Google +-->
+            <a class="gplus-ic" href="mailto:mriyad94@gmail.com">
+              <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            <span>mriyad94@gmail.com</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  {% block modal %}{% endblock modal %}
+
+
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  {% block javascript %}
+
+  <!-- Bootstrap JS and its dependencies-->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- Your stuff: Third-party javascript libraries go here -->
+
+  <!-- place project specific Javascript in this file -->
+  <script src="{% static 'js/project.js' %}"></script>
+  <script src="{% static 'vendors/jquery-easing/jquery.easing.js' %}"></script>
+  <script src="{% static 'js/sb-admin-2.js' %}"></script>
+  {% block extra_js %}
+
+  {% endblock %}
+  {% endblock javascript %}
+</body>
+
+</html>
