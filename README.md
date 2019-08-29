@@ -10,6 +10,7 @@ ___
 --- 
 # Technology Used
 * Django
+* Python
 * Html
 * CSS 
 * Javascript
